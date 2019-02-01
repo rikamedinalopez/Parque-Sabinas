@@ -1,0 +1,222 @@
+﻿<Window x:Class="Parque_Sabinas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:local="clr-namespace:Parque_Sabinas"
+        mc:Ignorable="d"
+         Height="768" Width="1366" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded">
+    <Window.Resources>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Width" Value="Auto"/>
+
+        </Style>
+        
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1" >
+
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200*"/>
+                    <RowDefinition Height="200*"/>
+                    <RowDefinition Height="200*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <StackPanel VerticalAlignment="Center" >
+                        <TextBlock Text="Seleccione el tipo de cliente" TextAlignment="Center" FontSize="25"/>
+                        <ComboBox x:Name="comboBoxTypeCustomer" FontSize="30" Padding="10 10 10 10" Margin="0 20 0 0" HorizontalAlignment="Center">
+                            <ComboBoxItem IsSelected="True">Adulto</ComboBoxItem>
+                            <ComboBoxItem>Niño</ComboBoxItem>
+                            <ComboBoxItem>Bebe</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Height="60" Width="60" HorizontalAlignment="Left" Margin="0 0 50 0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"  Foreground="White" Background="#dc3545" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Height="Auto" Width="Auto" Kind="Minus"/>
+                        </Button>
+
+                        <TextBlock x:Name="txtQuianity" Text="1" FontSize="50" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                        <Button Height="60" Width="60" HorizontalAlignment="Right" Margin="50 0 0 0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Foreground="White" Background="#28a745" BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Height="Auto" Width="Auto" Kind="Plus"/>
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="3">
+                    <Button Height="60" Width="200" HorizontalAlignment="Center"  Content="Agregar" FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}" x:Name="btn_AddToDataGrid" Click="Btn_AddToDataGrid_Click"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <ScrollViewer>
+                        <DataGrid x:Name="dataGridShowTotal" ItemsSource="{Binding}" Background="{x:Null}">
+                            <DataGrid.Columns>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </ScrollViewer>
+
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <Button Margin="10" Width="200" Height="50" Background="#dc3545" BorderBrush="{x:Null}">
+                        <Grid Width="200">
+                            <materialDesign:PackIcon Kind="Trash" VerticalAlignment="Center" Height="28" Width="60" />
+                            <TextBlock TextAlignment="Center" Text="Limpiar" FontSize="25"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="3">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="Total: 75$" VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Button Height="80" Width="300" HorizontalAlignment="Center"  Content="Confirmar compra" FontSize="30" Foreground="White" Background="#28a745" BorderBrush="{x:Null}"/>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+                <Image Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="68,87,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
+
+
+
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect RenderingBias="Quality" Color="#FFF3F3F3" ShadowDepth="3"></DropShadowEffect>
+            </Grid.Effect>
+            <Grid>
+                <Image Source="images/logo_dale.jpg" Stretch="Fill" Margin="0,0,0,-100" StretchDirection="UpOnly"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+
+                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Opcion 1" FontSize="25"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Opcion 2" FontSize="25"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Opcion 3" FontSize="25"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Opcion 4" FontSize="25"/>
+                    </Grid>
+                </Button>
+
+            </StackPanel>
+
+
+
+        </Grid>
+
+        <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <!-- Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"-->
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Entrada: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                    <Button Margin="0 0 20 0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" >
+                        <TextBlock Text="Acceso 1" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Caja 1: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                    <Button Margin="0 0 20 0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" >
+                        <TextBlock Text="Claudia Bocanegra" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
+                    </Button>
+                </StackPanel>
+
+
+                <Button x:Name="btnConfig" Margin="0 0 20 0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" Click="BtnConfig_Click">
+                    <materialDesign:PackIcon Height="Auto" Width="Auto" Kind="Settings"/>
+                </Button>
+                <Button x:Name="btnClose"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" Click="btnClose_Click">
+                    <materialDesign:PackIcon Height="Auto" Width="Auto" Kind="CloseCircle"/>
+                </Button>
+            </StackPanel>
+
+
+
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="images/logo_sabinas_hidalgo.jpg" />
+                <TextBlock Text="PARQUE LA TURBINA" FontWeight="Bold" Margin="20 0 0 0" VerticalAlignment="Center" Foreground="White"  TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>
