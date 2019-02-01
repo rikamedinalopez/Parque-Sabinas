@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parque_Sabinas.cs;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,7 +27,12 @@ namespace Parque_Sabinas
             InitializeComponent();
         }
 
-        DataTable table = new DataTable();
+        int cont = 1;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }        
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -40,19 +46,40 @@ namespace Parque_Sabinas
 
         private void Btn_AddToDataGrid_Click(object sender, RoutedEventArgs e)
         {
+            Buyout compra = new Buyout();
+            compra.Quantity = txtQuianity.Text.ToString();
+            compra.Customer = comboBoxTypeCustomer.Text.ToString();
+            compra.Price = "20";
 
+            dataGridShowTotal.Items.Add(compra);
+            DataTable table = new DataTable();
 
-            table.Rows.Add("2", "Adulto", "50$");
-            table.Rows.Add("1", "Niño", "25$");
+        }        
 
-            dataGridShowTotal.DataContext = table;
+        private void Btn_Minus_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (cont > 1)
+            {
+                cont--;
+                int a = cont;
+                txtQuianity.Text = Convert.ToString(a);
+            }                                     
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Btn_Plus_Click(object sender, RoutedEventArgs e)
         {
-            table.Columns.Add("Cantidad", typeof(string));
-            table.Columns.Add("Tipo de cliente", typeof(string));
-            table.Columns.Add("Precio", typeof(string));
+            if (cont < 20)
+            {
+                cont++;
+                int a = cont;
+                txtQuianity.Text = Convert.ToString(a);
+            }
+        }
+
+        private void Btn_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridShowTotal.Items.Clear();
         }
     }
 }
