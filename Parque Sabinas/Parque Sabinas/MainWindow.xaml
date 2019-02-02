@@ -44,11 +44,14 @@
                 <Grid Grid.Row="0" Grid.Column="0">
                     <StackPanel VerticalAlignment="Center" >
                         <TextBlock Text="Seleccione el tipo de cliente" TextAlignment="Center" FontSize="25"/>
-                        <ComboBox x:Name="comboBoxTypeCustomer" FontSize="30" Padding="10 10 10 10" Margin="0 20 0 0" HorizontalAlignment="Center">
-                            <ComboBoxItem IsSelected="True">Adulto</ComboBoxItem>
-                            <ComboBoxItem>Niño</ComboBoxItem>
-                            <ComboBoxItem>Bebe</ComboBoxItem>
+                        <ComboBox x:Name="comboBoxTypeCustomer" FontSize="30" Padding="10 10 10 10" Margin="0 20 0 0" HorizontalAlignment="Center" IsMouseCapturedChanged="ComboBoxTypeCustomer_IsMouseCapturedChanged">
+                            
+                            
                         </ComboBox>
+                        <StackPanel Margin="0 30 0 0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="lblUnitePrice" Text="Precio Unitario: " TextAlignment="Center" FontSize="20"/>
+                            <TextBlock x:Name="txtUnitprice"  TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
 
@@ -108,7 +111,11 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <TextBlock x:Name="txtQuanityTotal" Text="Total: 75$" VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock x:Name="lblQuanityTotal" Text="Total: " VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                                <TextBlock x:Name="txtQuanityTotal" Text="0$" VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
+                            </StackPanel>
+                            
                         </Grid>
 
                         <Grid Grid.Row="1">

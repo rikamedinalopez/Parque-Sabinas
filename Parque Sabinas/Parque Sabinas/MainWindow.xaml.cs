@@ -27,16 +27,27 @@ namespace Parque_Sabinas
             InitializeComponent();
         }
 
+        Buyout compra = new Buyout();
         int cont = 1;
+        int subtotal = 0;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Buyout buyout = new Buyout();
+            comboBoxTypeCustomer.ItemsSource = buyout.Customers().Tables[0].DefaultView;
+            comboBoxTypeCustomer.DisplayMemberPath = "type_customer";
+            comboBoxTypeCustomer.SelectedValuePath = "id_type_customer";
+            comboBoxTypeCustomer.SelectedIndex = 0;
+            compra.Customer = comboBoxTypeCustomer.Text;
+            compra.Price = compra.CheckPrice();
+            txtUnitprice.Text = compra.CheckPrice() + "$";
         }        
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Hide();
+            Log_in login = new Log_in();
+            login.Show();
         }
 
         private void BtnConfig_Click(object sender, RoutedEventArgs e)
@@ -45,15 +56,14 @@ namespace Parque_Sabinas
         }
 
         private void Btn_AddToDataGrid_Click(object sender, RoutedEventArgs e)
-        {
-            Buyout compra = new Buyout();
-            compra.Quantity = txtQuianity.Text.ToString();
-            compra.Customer = comboBoxTypeCustomer.Text.ToString();
-            compra.Price = "20";
+        {            
+            compra.Quantity = Convert.ToInt16(txtQuianity.Text);
+            subtotal += compra.SubTotalPrice();
+            txtQuanityTotal.Text = Convert.ToString(subtotal) + "$";
 
             dataGridShowTotal.Items.Add(compra);
-            DataTable table = new DataTable();
 
+            ResetCont();
         }        
 
         private void Btn_Minus_Click(object sender, RoutedEventArgs e)
@@ -79,7 +89,25 @@ namespace Parque_Sabinas
 
         private void Btn_Clear_Click(object sender, RoutedEventArgs e)
         {
+            ResetCont();
             dataGridShowTotal.Items.Clear();
+            subtotal = 0;
+            txtQuanityTotal.Text = Convert.ToString(subtotal);
+        }
+
+        private void ComboBoxTypeCustomer_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {            
+            compra.Customer = comboBoxTypeCustomer.Text;
+            compra.Price = compra.CheckPrice();
+            txtUnitprice.Text = compra.CheckPrice() + "$";            
+
+
+        }
+
+        public void ResetCont()
+        {
+            cont = 1;
+            txtQuianity.Text = Convert.ToString(cont);
         }
     }
 }

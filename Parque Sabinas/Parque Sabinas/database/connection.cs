@@ -8,51 +8,15 @@ using System.Threading.Tasks;
 
 namespace Parque_Sabinas.database
 {
-    class Connection
+    public class Connection
     {
-        
 
-        protected static String Query = "server=localhost; Port=3306; database=parque_sabinas; Uid=root; Pwd=1234;";
-        MySqlConnection Conexion = new MySqlConnection(Query);
-        MySqlCommand Comando = new MySqlCommand();
-
-        public Connection()
+        public MySqlConnection Conectando()
         {
-            Conexion.ConnectionString = Query;
+            MySqlConnection cone = new MySqlConnection("Server=localhost;Port=3306;UserID=root;Password=1234;Database=parque_sabinas");
+            cone.Open();
+            return cone;
         }
 
-        public void Conectar()
-        {
-            if (Conexion.State.Equals(ConnectionState.Closed))
-            {
-                Conexion.Open();
-            }
-        }
-
-        public void Desconectar()
-        {
-            if (Conexion.State.Equals(ConnectionState.Open))
-            {
-                Conexion.Close();
-            }
-        }
-
-        public void CrearComando(string sentenciaSQL)
-        {
-            Comando.Connection = Conexion;
-            Comando.CommandType = CommandType.Text;
-            Comando.CommandText = sentenciaSQL;
-        }
-
-        public int EjecutarComandoInt()
-        {
-            return Comando.ExecuteNonQuery();
-        }
-
-        public MySqlDataReader EjecutarComando()
-        {
-            MySqlDataReader LeerDatos = Comando.ExecuteReader();
-            return LeerDatos;
-        }
     }
 }
