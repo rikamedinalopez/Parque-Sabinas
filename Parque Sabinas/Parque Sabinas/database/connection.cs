@@ -13,7 +13,7 @@ namespace Parque_Sabinas.database
 
         public MySqlConnection Conectando()
         {
-            MySqlConnection cone = new MySqlConnection("Server=localhost;Port=3306;UserID=root;Password=31032014;Database=park_sabinas");
+            MySqlConnection cone = new MySqlConnection("Server=localhost;Port=3306;UserID=root;Password=1234;Database=parque_sabinas");
             cone.Open();
             return cone;
         }
