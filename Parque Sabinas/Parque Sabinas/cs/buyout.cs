@@ -12,15 +12,17 @@ namespace Parque_Sabinas.cs
 {
     class Buyout : Connection
     {
-        private int quantity;        
+        private string quantity;        
         private string customer;
         private int price;
         private int quantityTotal;
+        private int subTotal;
 
-        public int Quantity { get => quantity; set => quantity = value; }
+        public string Quantity { get => quantity; set => quantity = value; }
         public string Customer { get => customer; set => customer = value; }
         public int Price { get => price; set => price = value; }
         public int QuantityTotal { get => quantityTotal; set => quantityTotal = value; }
+        public int SubTotal { get => subTotal; set => subTotal = value; }
 
         public DataSet Customers()
         {
@@ -43,7 +45,9 @@ namespace Parque_Sabinas.cs
 
         public int SubTotalPrice()
         {
-            int subtotal = (quantity * price);
+            char[] caracteres = {'x'};
+            int quantityInt = Convert.ToInt32(quantity.Trim(caracteres));                        
+            int subtotal = (quantityInt * price);
             return subtotal;
         }
     }

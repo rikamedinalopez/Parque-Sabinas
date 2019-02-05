@@ -1,0 +1,31 @@
+﻿<Window x:Class="Parque_Sabinas.dialogs.Users"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parque_Sabinas.dialogs"
+        mc:Ignorable="d"
+        Height="500" Width="768" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
+
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Administrar Usuarios" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid>
+
+        </Grid>
+    </Grid>
+</Window>

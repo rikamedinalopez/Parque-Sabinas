@@ -11,6 +11,7 @@
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None">
     <Grid>
+        
 
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>

@@ -6,16 +6,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:local="clr-namespace:Parque_Sabinas"
         mc:Ignorable="d"
-         Height="768" Width="1366" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded">
+        Height="768" Width="1366" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded">
     <Window.Resources>
 
         <Style TargetType="{x:Type DataGridRow}">
             <Setter Property="FontSize" Value="30" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Width" Value="Auto"/>
-
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="#9E9E9E"></Setter>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
 
     </Window.Resources>
     <Grid>
@@ -45,8 +51,8 @@
                     <StackPanel VerticalAlignment="Center" >
                         <TextBlock Text="Seleccione el tipo de cliente" TextAlignment="Center" FontSize="25"/>
                         <ComboBox x:Name="comboBoxTypeCustomer" FontSize="30" Padding="10 10 10 10" Margin="0 20 0 0" HorizontalAlignment="Center" IsMouseCapturedChanged="ComboBoxTypeCustomer_IsMouseCapturedChanged">
-                            
-                            
+
+
                         </ComboBox>
                         <StackPanel Margin="0 30 0 0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock x:Name="lblUnitePrice" Text="Precio Unitario: " TextAlignment="Center" FontSize="20"/>
@@ -83,8 +89,8 @@
 
                                 <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="Cantidad"/>
                                 <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Cliente"/>
-                                <DataGridTextColumn Binding="{Binding Path=Price}" ClipboardContentBinding="{x:Null}" Header="Precio"/>
-
+                                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="Precio"/>
+                                <DataGridTextColumn Binding="{Binding Path=SubTotal, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="SubTotal"/>
                             </DataGrid.Columns>
 
                         </DataGrid>
@@ -115,7 +121,7 @@
                                 <TextBlock x:Name="lblQuanityTotal" Text="Total: " VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
                                 <TextBlock x:Name="txtQuanityTotal" Text="0$" VerticalAlignment="Center" TextAlignment="Center" FontSize="40" FontWeight="Bold"/>
                             </StackPanel>
-                            
+
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -125,9 +131,6 @@
                     </Grid>
 
                 </Grid>
-                <Image Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="68,87,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
-
-
 
 
             </Grid>
@@ -155,31 +158,28 @@
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
-                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Customers" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Customers_Click">
                     <Grid Width="200">
-                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
-                        <TextBlock TextAlignment="Center" Text="Opcion 1" FontSize="25"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <materialDesign:PackIcon Kind="AccountGroup" VerticalAlignment="Center" Height="28"  Width="40" Margin="0,2,0,0" />
+                        <TextBlock TextAlignment="Center" Text="Clientes" FontSize="25" Grid.RowSpan="2"/>
                     </Grid>
                 </Button>
 
-                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Users" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Users_Click">
                     <Grid Width="200">
-                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
-                        <TextBlock TextAlignment="Center" Text="Opcion 2" FontSize="25"/>
+                        <materialDesign:PackIcon Kind="User" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Usuarios" FontSize="25"/>
                     </Grid>
                 </Button>
 
-                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Corte" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Corte_Click">
                     <Grid Width="200">
                         <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
-                        <TextBlock TextAlignment="Center" Text="Opcion 3" FontSize="25"/>
-                    </Grid>
-                </Button>
-
-                <Button Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}">
-                    <Grid Width="200">
-                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
-                        <TextBlock TextAlignment="Center" Text="Opcion 4" FontSize="25"/>
+                        <TextBlock TextAlignment="Center" Text="Corte" FontSize="25"/>
                     </Grid>
                 </Button>
 
@@ -194,7 +194,7 @@
                 <!-- Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"-->
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Entrada: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
-                    <Button Margin="0 0 20 0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" >
+                    <Button Margin="0 0 20 0" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto">
                         <TextBlock Text="Acceso 1" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
                     </Button>
                 </StackPanel>

@@ -1,4 +1,5 @@
 ﻿using Parque_Sabinas.cs;
+using Parque_Sabinas.dialogs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,11 +58,14 @@ namespace Parque_Sabinas
 
         private void Btn_AddToDataGrid_Click(object sender, RoutedEventArgs e)
         {            
-            compra.Quantity = Convert.ToInt16(txtQuianity.Text);
-            subtotal += compra.SubTotalPrice();
+            compra.Quantity = txtQuianity.Text;
+            compra.SubTotal = compra.SubTotalPrice();
+            subtotal += compra.SubTotal;
             txtQuanityTotal.Text = Convert.ToString(subtotal) + "$";
-
+            compra.Quantity = "x" + compra.Quantity;
             dataGridShowTotal.Items.Add(compra);
+
+            
 
             ResetCont();
         }        
@@ -108,6 +112,24 @@ namespace Parque_Sabinas
         {
             cont = 1;
             txtQuianity.Text = Convert.ToString(cont);
+        }
+
+        private void Btn_Customers_Click(object sender, RoutedEventArgs e)
+        {
+            Customers windowCustomers = new Customers();
+            windowCustomers.ShowDialog();
+        }
+
+        private void Btn_Users_Click(object sender, RoutedEventArgs e)
+        {
+            Users windowUsers = new Users();
+            windowUsers.ShowDialog();
+        }
+
+        private void Btn_Corte_Click(object sender, RoutedEventArgs e)
+        {
+            Corte windowCorte = new Corte();
+            windowCorte.ShowDialog();
         }
     }
 }
