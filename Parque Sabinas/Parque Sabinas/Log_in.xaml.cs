@@ -28,18 +28,29 @@ namespace Parque_Sabinas
             InitializeComponent();
         }
         Connection connection = new Connection();
+        UserInfo user = new UserInfo();
 
         private void Btn_log_in_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection conn = connection.Conectando();
-            string query = $"select count(*) from users where name_user='{ txtUser.Text }' and pwd_user='{ txtPassword.Password.ToString() }'";
+            MySqlConnection conn = connection.Conectando();            
+            string query = $"select count(*) count, id_user, name_user, user_name, pwd_user, type_user, (Select name_section from sections where users.id_section = sections.id_section) section from users where user_name='{ txtUser.Text }' and pwd_user='{ txtPassword.Password.ToString() }';";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            int unit_price = Convert.ToInt16(cmd.ExecuteScalar());
+            DataTable tableUser = new DataTable();
+            MySqlDataReader datareader = cmd.ExecuteReader();
+            tableUser.Load(datareader);
 
-            if (unit_price == 1)
+            
+
+
+            if (tableUser.Rows[0][0].ToString() == "1")
             {
-                this.Hide();
+                user.Id = Convert.ToInt16(tableUser.Rows[0]["id_user"]);
+                user.Name_User = tableUser.Rows[0]["name_user"].ToString();
+                user.User_Name = tableUser.Rows[0]["user_name"].ToString();
+                user.Type_User = tableUser.Rows[0]["type_user"].ToString();
+                user.Section = tableUser.Rows[0]["section"].ToString();
                 new MainWindow().Show();
+                this.Close();
             }
             else
             {
@@ -60,6 +71,11 @@ namespace Parque_Sabinas
             //{
 
             //}
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

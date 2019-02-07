@@ -79,7 +79,13 @@
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="3">
-                    <Button Height="60" Width="200" HorizontalAlignment="Center"  Content="Agregar" FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}" x:Name="btn_AddToDataGrid" Click="Btn_AddToDataGrid_Click"/>
+
+                    <Button Height="60" Width="200" HorizontalAlignment="Center"  FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}" x:Name="btn_AddToDataGrid" Click="Btn_AddToDataGrid_Click">
+                        <Grid Width="200">
+                            <materialDesign:PackIcon Kind="PlusCircle" VerticalAlignment="Center" Height="30" Width="60" />
+                            <TextBlock TextAlignment="Center" Text="Agregar" FontSize="25" Margin="0 0 0 0"/>
+                        </Grid>
+                    </Button>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="3">
@@ -89,8 +95,9 @@
 
                                 <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="Cantidad"/>
                                 <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Cliente"/>
-                                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="Precio"/>
+                                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="Precio Unitario"/>
                                 <DataGridTextColumn Binding="{Binding Path=SubTotal, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="SubTotal"/>
+                                
                             </DataGrid.Columns>
 
                         </DataGrid>
@@ -158,6 +165,13 @@
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
+                <Button x:Name="btn_Corte" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Corte_Click">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Corte" FontSize="25"/>
+                    </Grid>
+                </Button>
+
                 <Button x:Name="btn_Customers" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Customers_Click">
                     <Grid Width="200">
                         <Grid.RowDefinitions>
@@ -176,12 +190,7 @@
                     </Grid>
                 </Button>
 
-                <Button x:Name="btn_Corte" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Corte_Click">
-                    <Grid Width="200">
-                        <materialDesign:PackIcon Kind="Store" VerticalAlignment="Center" Height="28"  Width="40" />
-                        <TextBlock TextAlignment="Center" Text="Corte" FontSize="25"/>
-                    </Grid>
-                </Button>
+                
 
             </StackPanel>
 
@@ -192,18 +201,21 @@
         <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <!-- Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"-->
-                <StackPanel VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
                     <TextBlock Text="Entrada: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
-                    <Button Margin="0 0 20 0" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto">
-                        <TextBlock Text="Acceso 1" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
-                    </Button>
+                    <TextBlock x:Name="txtSection" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"  FontSize="22" FontWeight="Bold"/>
                 </StackPanel>
 
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Caja 1: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
-                    <Button Margin="0 0 20 0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Width="Auto" Height="Auto" >
-                        <TextBlock Text="Claudia Bocanegra" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
-                    </Button>
+                <StackPanel VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Usuario: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                        
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock x:Name="txtNameUser" Foreground="White" TextAlignment="Center" FontSize="22" FontWeight="Bold"/>
+                    </StackPanel>
+                    
+                    
                 </StackPanel>
 
 

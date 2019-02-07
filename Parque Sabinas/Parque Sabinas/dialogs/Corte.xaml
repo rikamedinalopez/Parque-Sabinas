@@ -10,23 +10,27 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
 
-            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Informacion del Corte de Caja" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid>
+        <Grid Grid.Row="1">
             
+            <StackPanel VerticalAlignment="Center">
+                <Button Content="Realizar Corte" Width="Auto" Height="40" Margin="40" FontSize="20" Background="#FF005299" BorderBrush="{x:Null}"/>
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>

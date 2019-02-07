@@ -35,6 +35,7 @@ namespace Parque_Sabinas
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Buyout buyout = new Buyout();
+            UserInfo user = new UserInfo();
             comboBoxTypeCustomer.ItemsSource = buyout.Customers().Tables[0].DefaultView;
             comboBoxTypeCustomer.DisplayMemberPath = "type_customer";
             comboBoxTypeCustomer.SelectedValuePath = "id_type_customer";
@@ -42,13 +43,18 @@ namespace Parque_Sabinas
             compra.Customer = comboBoxTypeCustomer.Text;
             compra.Price = compra.CheckPrice();
             txtUnitprice.Text = compra.CheckPrice() + "$";
+
+            //Asignar valores
+            txtNameUser.Text = user.Name_User;
+            txtSection.Text = user.Section;
         }        
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            
             Log_in login = new Log_in();
             login.Show();
+            this.Close();
         }
 
         private void BtnConfig_Click(object sender, RoutedEventArgs e)
@@ -63,9 +69,7 @@ namespace Parque_Sabinas
             subtotal += compra.SubTotal;
             txtQuanityTotal.Text = Convert.ToString(subtotal) + "$";
             compra.Quantity = "x" + compra.Quantity;
-            dataGridShowTotal.Items.Add(compra);
-
-            
+            dataGridShowTotal.Items.Add(compra);            
 
             ResetCont();
         }        

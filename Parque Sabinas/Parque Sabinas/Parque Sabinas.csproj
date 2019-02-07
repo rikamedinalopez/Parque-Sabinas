@@ -135,6 +135,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="cs\buyout.cs" />
+    <Compile Include="cs\UserInfo.cs" />
     <Compile Include="database\connection.cs" />
     <Compile Include="dialogs\Corte.xaml.cs">
       <DependentUpon>Corte.xaml</DependentUpon>
