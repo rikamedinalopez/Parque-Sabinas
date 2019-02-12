@@ -1,0 +1,72 @@
+﻿<Window x:Class="Parque_Sabinas.dialogs.Sections"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parque_Sabinas.dialogs"
+        mc:Ignorable="d"
+        Height="500" Width="768" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Administrar Secciones" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Margin="10 0" VerticalAlignment="Center" >
+                <TextBlock TextAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Secciones</TextBlock>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <DataGrid>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="ID" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Seccion" Width="*"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel Margin="10 0" VerticalAlignment="Center" >
+                <TextBlock TextAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Cajas</TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="2">
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <DataGrid>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="ID" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Caja" Width="*"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+        </Grid>
+
+
+    </Grid>
+</Window>

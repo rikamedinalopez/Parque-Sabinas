@@ -137,11 +137,23 @@
     <Compile Include="cs\buyout.cs" />
     <Compile Include="cs\UserInfo.cs" />
     <Compile Include="database\connection.cs" />
+    <Compile Include="dialogs\Config.xaml.cs">
+      <DependentUpon>Config.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\ConfigDevice.xaml.cs">
+      <DependentUpon>ConfigDevice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialogs\Corte.xaml.cs">
       <DependentUpon>Corte.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialogs\Customers.xaml.cs">
       <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\Movements.xaml.cs">
+      <DependentUpon>Movements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\Sections.xaml.cs">
+      <DependentUpon>Sections.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialogs\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
@@ -152,11 +164,27 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="dialogs\Config.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogs\ConfigDevice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialogs\Corte.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialogs\Customers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogs\Movements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogs\Sections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

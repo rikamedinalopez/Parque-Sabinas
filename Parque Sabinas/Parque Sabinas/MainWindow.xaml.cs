@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Parque_Sabinas.Properties;
 
 namespace Parque_Sabinas
 {
@@ -29,13 +30,14 @@ namespace Parque_Sabinas
         }
 
         Buyout compra = new Buyout();
+        Buyout buyout = new Buyout();
+        UserInfo user = new UserInfo();
         int cont = 1;
         int subtotal = 0;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Buyout buyout = new Buyout();
-            UserInfo user = new UserInfo();
+          
             comboBoxTypeCustomer.ItemsSource = buyout.Customers().Tables[0].DefaultView;
             comboBoxTypeCustomer.DisplayMemberPath = "type_customer";
             comboBoxTypeCustomer.SelectedValuePath = "id_type_customer";
@@ -44,9 +46,11 @@ namespace Parque_Sabinas
             compra.Price = compra.CheckPrice();
             txtUnitprice.Text = compra.CheckPrice() + "$";
 
+
             //Asignar valores
             txtNameUser.Text = user.Name_User;
             txtSection.Text = user.Section;
+            
         }        
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -59,7 +63,9 @@ namespace Parque_Sabinas
 
         private void BtnConfig_Click(object sender, RoutedEventArgs e)
         {
-
+            ConfigDevice configDevice = new ConfigDevice();
+            configDevice.ShowDialog();
+            
         }
 
         private void Btn_AddToDataGrid_Click(object sender, RoutedEventArgs e)
@@ -134,6 +140,30 @@ namespace Parque_Sabinas
         {
             Corte windowCorte = new Corte();
             windowCorte.ShowDialog();
+        }
+
+        private void Btn_Movements_Click(object sender, RoutedEventArgs e)
+        {
+            Movements moviments = new Movements();
+            moviments.ShowDialog();
+        }
+
+        
+        private void Window_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.Modifiers == ModifierKeys.Control) && (e.Key == Key.E))
+            {
+
+                ConfigDevice config = new ConfigDevice();
+                config.ShowDialog();
+
+            }
+        }
+
+        private void Btn_Sections_Click(object sender, RoutedEventArgs e)
+        {
+            Sections section = new Sections();
+            section.ShowDialog();
         }
     }
 }

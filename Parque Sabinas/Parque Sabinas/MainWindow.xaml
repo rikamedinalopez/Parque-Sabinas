@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:local="clr-namespace:Parque_Sabinas"
         mc:Ignorable="d"
-        Height="768" Width="1366" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded">
+        Height="768" Width="1366" WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized" Loaded="Window_Loaded" KeyDown="Window_KeyDown_1">
     <Window.Resources>
 
         <Style TargetType="{x:Type DataGridRow}">
@@ -82,22 +82,26 @@
 
                     <Button Height="60" Width="200" HorizontalAlignment="Center"  FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}" x:Name="btn_AddToDataGrid" Click="Btn_AddToDataGrid_Click">
                         <Grid Width="200">
-                            <materialDesign:PackIcon Kind="PlusCircle" VerticalAlignment="Center" Height="30" Width="60" />
-                            <TextBlock TextAlignment="Center" Text="Agregar" FontSize="25" Margin="0 0 0 0"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="27*"/>
+                                <ColumnDefinition Width="173*"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Kind="PlusCircle" VerticalAlignment="Center" Height="30" Width="60" Grid.ColumnSpan="2" Margin="0,4,0,3" />
+                            <TextBlock TextAlignment="Center" Text="Agregar" FontSize="25" Margin="0 0 0 4" Grid.ColumnSpan="2"/>
                         </Grid>
                     </Button>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="3">
                     <ScrollViewer>
-                        <DataGrid x:Name="dataGridShowTotal" ItemsSource="{Binding}" Background="{x:Null}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ColumnWidth="*" CanUserResizeColumns="False" CanUserAddRows="False">
+                        <DataGrid x:Name="dataGridShowTotal" ItemsSource="{Binding}" Background="{x:Null}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ColumnWidth="*" CanUserResizeColumns="False" CanUserAddRows="True">
                             <DataGrid.Columns>
 
                                 <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="Cantidad"/>
                                 <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Cliente"/>
                                 <DataGridTextColumn Binding="{Binding Path=Price, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="Precio Unitario"/>
                                 <DataGridTextColumn Binding="{Binding Path=SubTotal, StringFormat={}{0:C}}" ClipboardContentBinding="{x:Null}" Header="SubTotal"/>
-                                
+
                             </DataGrid.Columns>
 
                         </DataGrid>
@@ -132,7 +136,7 @@
                         </Grid>
 
                         <Grid Grid.Row="1">
-                            <Button Height="80" Width="300" HorizontalAlignment="Center"  Content="Confirmar compra" FontSize="30" Foreground="White" Background="#28a745" BorderBrush="{x:Null}"/>
+                            <Button Height="80" Width="300" HorizontalAlignment="Center"  Content="Confirmar Compra" FontSize="30" Foreground="White" Background="#28a745" BorderBrush="{x:Null}"/>
                         </Grid>
 
                     </Grid>
@@ -172,6 +176,13 @@
                     </Grid>
                 </Button>
 
+                <Button x:Name="btn_Movements" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Movements_Click">
+                    <Grid Width="230">
+                        <materialDesign:PackIcon Kind="ArrowUpBox" VerticalAlignment="Center" Height="28"  Width="30" />
+                        <TextBlock TextAlignment="Center" Text="Movimientos" FontSize="25"/>
+                    </Grid>
+                </Button>
+
                 <Button x:Name="btn_Customers" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Customers_Click">
                     <Grid Width="200">
                         <Grid.RowDefinitions>
@@ -190,7 +201,14 @@
                     </Grid>
                 </Button>
 
-                
+                <Button x:Name="btn_Sections" Margin="10" Height="50" Background="#FF005299" BorderBrush="{x:Null}" Click="Btn_Sections_Click">
+                    <Grid Width="200">
+                        <materialDesign:PackIcon Kind="Place" VerticalAlignment="Center" Height="28"  Width="40" />
+                        <TextBlock TextAlignment="Center" Text="Secciones" FontSize="25"/>
+                    </Grid>
+                </Button>
+
+
 
             </StackPanel>
 
@@ -202,20 +220,18 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <!-- Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"-->
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
-                    <TextBlock Text="Entrada: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
-                    <TextBlock x:Name="txtSection" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"  FontSize="22" FontWeight="Bold"/>
+                    <TextBlock Text="Caja: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                    <TextBlock x:Name="txtBoxNumber" Text="Caja 1" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"  FontSize="22" FontWeight="Bold"/>
                 </StackPanel>
 
-                <StackPanel VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="Usuario: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
-                        
-                    </StackPanel>
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock x:Name="txtNameUser" Foreground="White" TextAlignment="Center" FontSize="22" FontWeight="Bold"/>
-                    </StackPanel>
-                    
-                    
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
+                    <TextBlock Text="Entrada: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                    <TextBlock x:Name="txtSection" Text="Acceso Principal" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"  FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20 0 20 0" HorizontalAlignment="Center">
+                    <TextBlock Text="Usuario: " Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22"/>
+                    <TextBlock x:Name="txtNameUser" Text="Jose Ricardo" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"  FontSize="22" FontWeight="Bold"/>
                 </StackPanel>
 
 

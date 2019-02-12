@@ -9,7 +9,7 @@
         Title="Login" Height="500" Width="450" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None">
+        WindowStyle="None" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,7 +21,6 @@
         </Grid.RowDefinitions>
 
         
-
         <Grid  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
             
             <Rectangle Height="280" VerticalAlignment="Top">

@@ -13,11 +13,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
+            
         </Grid.RowDefinitions>
 
-        <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
+        <Grid Grid.Row="0" x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Informacion del Corte de Caja" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
@@ -26,11 +26,35 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            
-            <StackPanel VerticalAlignment="Center">
-                <Button Content="Realizar Corte" Width="Auto" Height="40" Margin="40" FontSize="20" Background="#FF005299" BorderBrush="{x:Null}"/>
+
+            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                <Button Height="60" Margin="40" FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="280">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="27*"/>
+                            <ColumnDefinition Width="173*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="ContentCut" VerticalAlignment="Center" Height="30" Width="60" Grid.ColumnSpan="2"  />
+                        <TextBlock TextAlignment="Center" Text="Realizar Corte" FontSize="25" Margin="0 0 0 0" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Button>
+
+                <Button Height="60" Margin="40" FontSize="25" Foreground="White" Background="#FF005299" BorderBrush="{x:Null}">
+                    <Grid Width="280">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="27*"/>
+                            <ColumnDefinition Width="173*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Height="30" Width="60" Grid.ColumnSpan="2"  />
+                        <TextBlock TextAlignment="Center" Text="Buscar Corte" FontSize="25" Margin="0 0 0 0" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Button>
             </StackPanel>
 
+
+
         </Grid>
+
+        
     </Grid>
 </Window>
