@@ -1,4 +1,4 @@
-﻿<Window x:Class="Parque_Sabinas.dialogs.ConfigDevice"
+﻿<Window x:Class="Parque_Sabinas.dialogs.AddSection"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,16 +6,16 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Parque_Sabinas.dialogs"
         mc:Ignorable="d"
-        Height="300" Width="400" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Height="250" Width="300" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="28"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="80"/>
 
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -23,36 +23,26 @@
         <Grid x:Name="gridTitleBar" Grid.ColumnSpan="3" Background="#FF005299">
 
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Configuracion" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
+                <TextBlock Text="Agregar Seccion" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="22" FontWeight="Bold"/>
             </StackPanel>
 
         </Grid>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <StackPanel Margin="10 0" VerticalAlignment="Center" >
-                <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">Ubicacion</TextBlock>
-            </StackPanel>
 
-        </Grid>
 
         <Grid Grid.Row="2" Grid.Column="0">
 
             <StackPanel Orientation="Vertical">
+                <TextBox x:Name="txtSeccionName" Margin="10" FontSize="14"
+                  materialDesign:HintAssist.Hint="Nombre de la Seccion"
+                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 
-                <ComboBox x:Name="comboBoxSection" Margin="10" FontSize="14" Padding="10 10 10 10" HorizontalAlignment="Center">
-
-
-                </ComboBox>
-                <ComboBox x:Name="comboBoxCashBox" Margin="10" FontSize="14" Padding="10 10 10 10" HorizontalAlignment="Center">
-
-
-                </ComboBox>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="3" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnSaveConfig" Margin="0 0 20 0" Background="#FF005299" Width="160" Content="Guardar" Click="BtnSaveConfig_Click"/>
+                <Button x:Name="btnSaveSection" Margin="0 0 20 0" Background="#FF005299" Width="160" Content="Agregar" Click="BtnSaveSection_Click"/>
             </StackPanel>
         </Grid>
 

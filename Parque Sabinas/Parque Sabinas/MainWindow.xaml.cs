@@ -48,8 +48,23 @@ namespace Parque_Sabinas
 
 
             //Asignar valores
-            txtNameUser.Text = user.Name_User;
-            txtSection.Text = user.Section;
+
+            if (!string.IsNullOrEmpty(user.Section))
+            {
+                txtSection.Text = user.Section;
+            }
+            else
+            {
+                txtSection.Text = "No asignada";
+            }
+
+            if (!string.IsNullOrEmpty(Settings.Default.NumberCashBox))
+            {
+                txtBoxNumber.Text = Settings.Default.NumberCashBox;
+            } else
+            {
+                txtBoxNumber.Text = "No asignada";
+            }                        
             
         }        
 

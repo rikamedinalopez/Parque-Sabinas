@@ -43,7 +43,7 @@ namespace Parque_Sabinas
                     try
                     {
                         conn = connection.Conectando();
-                        MySqlCommand cmd = new MySqlCommand(string.Format($"select count(*) count, id_user, name_user, user_name, pwd_user, type_user, (Select name_section from sections where users.id_section = sections.id_section) section from users where user_name='{ txtUser.Text }' and pwd_user='{ txtPassword.Password.ToString() }';"), conn);
+                        MySqlCommand cmd = new MySqlCommand(string.Format($"select count(*) count, id_user, name_user, user_name, pwd_user, type_user, (Select name_section from sections where users.id_section = sections.id_section and status = 'A') section from users where user_name='{ txtUser.Text }' and pwd_user='{ txtPassword.Password.ToString() }';"), conn);
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable tableUser = new DataTable();
                         adapter.Fill(tableUser);

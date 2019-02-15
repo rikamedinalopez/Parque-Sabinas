@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parque_Sabinas.dialogs"
         mc:Ignorable="d"
-        Height="500" Width="768" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+        Height="500" Width="768" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Activated="Window_Activated">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -15,6 +15,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
 
@@ -35,11 +36,11 @@
 
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="10">
-                <DataGrid>
+                <DataGrid x:Name="dataGridSections" ItemsSource="{Binding Path=LoadSections}" Background="{x:Null}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ColumnWidth="*" CanUserResizeColumns="False" CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="DataGridSections_SelectionChanged">
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="ID" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Seccion" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=id_section}" ClipboardContentBinding="{x:Null}" Header="ID" IsReadOnly="True" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Path=name_section}" ClipboardContentBinding="{x:Null}" Header="Seccion" IsReadOnly="True" Width="*"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -55,16 +56,31 @@
         <Grid Grid.Row="2" Grid.Column="2">
 
             <StackPanel Orientation="Vertical" Margin="10">
-                <DataGrid>
+                <DataGrid x:Name="dataGridCajas" IsEnabled="False" ItemsSource="{Binding Path=LoadSections}" Background="{x:Null}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ColumnWidth="*" CanUserResizeColumns="False" CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="DataGridCajas_SelectionChanged">
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Binding="{Binding Path=Quantity}" ClipboardContentBinding="{x:Null}" Header="ID" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Path=Customer}" ClipboardContentBinding="{x:Null}" Header="Caja" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path=id_cashBox}" ClipboardContentBinding="{x:Null}" Header="ID" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Path=nameCashBox}" ClipboardContentBinding="{x:Null}" Header="Caja" Width="*"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
 
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnAddSection" Margin="0 0 20 0" Background="#FF005299" Width="160" Content="Agregar Seccion" Click="BtnAddSection_Click"/>
+                <Button x:Name="btnDeleteSection" Margin="20 0 0 0" Background="#dc3545" Foreground="White" BorderBrush="#dc3545" Width="160" Content="Eliminar Seccion" Click="BtnDeleteSection_Click" IsEnabled="False"/>
+                
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnAddCaja" Margin="0 0 0 0" Background="#FF005299" Width="160" Content="Agregar caja" Click="BtnAddCaja_Click" IsEnabled="False"/>
+                <Button x:Name="btnDeleteCaja" Margin="20 0 0 0" Background="#dc3545" Foreground="White" BorderBrush="#dc3545" Width="160" Content="Eliminar Caja" Click="BtnDeleteCaja_Click" IsEnabled="False"/>
+            </StackPanel>
         </Grid>
 
 

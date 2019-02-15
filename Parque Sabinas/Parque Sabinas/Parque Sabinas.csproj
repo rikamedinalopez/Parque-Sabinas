@@ -135,8 +135,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="cs\buyout.cs" />
+    <Compile Include="cs\Section.cs" />
     <Compile Include="cs\UserInfo.cs" />
     <Compile Include="database\connection.cs" />
+    <Compile Include="dialogs\AddCaja.xaml.cs">
+      <DependentUpon>AddCaja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\AddSection.xaml.cs">
+      <DependentUpon>AddSection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialogs\Config.xaml.cs">
       <DependentUpon>Config.xaml</DependentUpon>
     </Compile>
@@ -164,6 +171,14 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="dialogs\AddCaja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialogs\AddSection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialogs\Config.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
